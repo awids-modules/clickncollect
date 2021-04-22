@@ -31,7 +31,7 @@ class clickncollect {
         
         $errors = '';
         if (basename($PHP_SELF) != FILENAME_SHOPPING_CART) {
-          if ($messageStack->size('checkout_shipping') > 0) {
+          if ($messageStack->size('checkout_shipping') > 0 && $this->version() < '2.0.6.0') {
 		    $errors = '<div class="errormessage">'.$messageStack->output('checkout_shipping').'</div>';
 		  }
 		}
