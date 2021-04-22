@@ -31,7 +31,7 @@ VERSION: 1.0.1 / RELEASE-DATE: 2021-04-22 / AUTHOR: awids / PLATFORM: modified e
 1. Lade alle Dateien aus dem Ordner NEW_FILES anhand der vorgegebenen Ordner-Struktur hoch. Es werden dabei keine Dateien ueberschrieben.
 2. Fuehre die Schritte gemaess der nachfolgenden Einbauanleitung durch.
 3. Installiere das Modul "Click&Collect" im Backend unter Module > Versand Module und nimm die erforderlichen Einstellungen im Modul vor.
-4. <b>NUR Shopversionen 2.0.0.0 - 2.0.4.2</b>
+4. <b>NUR Shopversionen 2.0.0.0 - 2.0.4.2:</b>
    Trage den Inhalt der Datei:
    
    - /templates/dein_template/javascript/extra/datepicker.js.php
@@ -42,7 +42,7 @@ VERSION: 1.0.1 / RELEASE-DATE: 2021-04-22 / AUTHOR: awids / PLATFORM: modified e
    
    ein.
    
-   <b>NUR Shopversionen 2.0.0.0 - 2.0.5.1</b>
+   <b>NUR Shopversionen 2.0.0.0 - 2.0.5.1:</b>
    Trage Feiertage und gewünschte Abholzeiten ganz unten in den Dateien:
 
    - /lang/english/modules/shipping/clickncollect.php
