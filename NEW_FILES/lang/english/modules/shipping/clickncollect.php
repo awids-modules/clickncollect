@@ -14,6 +14,8 @@ define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_WAY_CONFIRMATION', 'Pick-Up time: %s 
 define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_DAY', 'Pick-Up date:&nbsp;');
 define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TIME', '&nbsp;Pick-Up time:&nbsp;');
 define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_ADDRESS', '<strong>Pick-Up address:</strong>');
+define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_TITLE', 'Lead time');
+define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_DESC', 'How many days lead time do you need to get the order ready for collection?');
 define('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE_TITLE', 'Public holidays');
 define('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE_DESC', 'Enter here in the suggested format the date on which collection should not be possible due to a public holiday. (If the input is empty, holidays are not taken into account.)');
 define('MODULE_SHIPPING_CLICKNCOLLECT_WEEKLY_TIMES_TITLE', 'Forbid days of the week?');
