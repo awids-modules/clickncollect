@@ -1,15 +1,12 @@
+# MODUL: Click&Collect (clickncollect)
 <img src="https://raw.githubusercontent.com/awids-modules/clickncollect/main/images/clickncollect.png" alt="Click&Collect" />
 
-# MODUL: Click&Collect (clickncollect)
 VERSION: 1.0.1 / RELEASE-DATE: 2021-04-22 / AUTHOR: awids / PLATFORM: modified eCommerce Shopsoftware 2.0.x.x and higher
 
 
-I N F O R M A T I O N 
-######################################################################################
+## I N F O R M A T I O N 
 
-##########################################################
-# Unterschiede bei Shopversionen von 2.0.0.0 bis 2.0.5.1 #
-##########################################################
+### Unterschiede bei Shopversionen von 2.0.0.0 bis 2.0.5.1
 
 1. Da Shopversionen vor 2.0.6.0 in der /checkout_shipping.php noch keine Ausgabe für
    Error-Messages haben, greift hier ein Fallback, der die Error-Message bei Nicht-
@@ -22,9 +19,7 @@ I N F O R M A T I O N
    HTML-Entitäten (aus Anführungszeichen wird z. B. &quot;) müssen diese  bei Shop-
    version unter 2.0.6.0 manuell in die Sprachdateien eingefügt werden.
 
-################
-# Neue Dateien #
-################
+### Neue Dateien
 
 - /images/icons/shipping_clickncollect.png
 - /includes/modules/shipping/clickncollect.php
@@ -38,15 +33,14 @@ I N F O R M A T I O N
 - /templates/tpl_modified_responsive/javascript/jquery.datetimepicker.full.min.js
 
 
-I N S T A L L A T I O N
-######################################################################################
+## I N S T A L L A T I O N
 
 1. Lade alle Dateien aus dem Ordner NEW_FILES anhand der vorgegebenen Ordner-Struktur
    hoch. Es werden dabei keine Dateien ueberschrieben.
 2. Fuehre die Schritte gemaess der nachfolgenden Einbauanleitung durch.
 3. Installiere das Modul "Click&Collect" im Backend unter Module > Versand Module und
    nimm die erforderlichen Einstellungen im Modul vor.
-4. [NUR Shopversionen 2.0.0.0 - 2.0.4.2]
+4. <b>NUR Shopversionen 2.0.0.0 - 2.0.4.2</b>
    Trage den Inhalt der Datei:
    
    - /templates/dein_template/javascript/extra/datepicker.js.php
@@ -57,7 +51,7 @@ I N S T A L L A T I O N
    
    ein.
    
-   [NUR Shopversionen 2.0.0.0 - 2.0.5.1]
+   <b>NUR Shopversionen 2.0.0.0 - 2.0.5.1</b>
    Trage Feiertage und gewünschte Abholzeiten ganz unten in den Dateien:
 
    - /lang/english/modules/shipping/clickncollect.php
@@ -67,12 +61,9 @@ I N S T A L L A T I O N
    Einschränkung im jeweiligen Bereich.
 
 
-E I N B A U A N L E I T U N G
-######################################################################################
+## E I N B A U A N L E I T U N G
 
-#################################################################
-# /templates/tpl_modified_responsive/css/general_bottom.css.php #
-#################################################################
+### /templates/tpl_modified_responsive/css/general_bottom.css.php
 
 Füge nach:
 
@@ -82,9 +73,8 @@ folgendes ein:
 
     DIR_TMPL_CSS.'jquery.datetimepicker.css',
 
-#######################################################################
-# /templates/tpl_modified_responsive/javascript/general_bottom.js.php #
-#######################################################################
+
+### /templates/tpl_modified_responsive/javascript/general_bottom.js.php
 
 Füge nach:
 
