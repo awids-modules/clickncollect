@@ -143,6 +143,7 @@ class clickncollect {
           xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE', '\"24.12.2021\", \"25.12.2021\", \"26.12.2021\", \"31.12.2021\", \"01.01.2022\"', '6', '4', now())");
           xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES', '\"08:00\", \"08:15\", \"08:30\", \"08:45\", \"09:00\", \"09:15\"', '6', '4', now())");
 		}
+        xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME', '0', '6', '4', now())");
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_WEEKLY_TIMES', '0, 6', '6', '4', now())");
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_THEME', 'default', '6', '4', 'xtc_cfg_select_option(array(\'default\', \'dark\'), ', now())");
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_FIRSTNAME', '', '6', '5', now())");
@@ -162,29 +163,26 @@ class clickncollect {
 
     function keys() {
 		$keys = array();
-		$mainkeys = array();
-		$subkeys = array();
 	
-	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_STATUS';
-	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_SORT_ORDER';
-	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_WEEKLY_TIMES';
+	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_STATUS';
+	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_SORT_ORDER';
+	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME';
+	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_WEEKLY_TIMES';
 		if ($this->version() >= '2.0.6.0') {
-	  	  $subkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE';
-	  	  $subkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES';
+	  	  $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE';
+	  	  $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES';
 		}
-	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_THEME';
-	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_ALLOWED';
-	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_COMPANY';
-	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_FIRSTNAME';
-	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_LASTNAME';
-	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_STREET_ADDRESS';
-	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_SUBURB';
-	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_POSTCODE';
-	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_CITY';
-	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_COUNTRY';
-	
-		$keys = array_merge($mainkeys,$subkeys);
-	
+	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_THEME';
+	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_ALLOWED';
+	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_COMPANY';
+	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_FIRSTNAME';
+	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_LASTNAME';
+	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_STREET_ADDRESS';
+	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_SUBURB';
+	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_POSTCODE';
+	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_CITY';
+	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_COUNTRY';
+		
 		return $keys;
     }
 
