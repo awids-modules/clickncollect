@@ -1,7 +1,7 @@
 ######################################################################################
 MODUL: 			Click&Collect (clickncollect)
-VERSION:		1.0.0
-RELEASE-DATE:		2021-04-22
+VERSION:		   1.0.1
+RELEASE-DATE:	2021-04-22
 AUTHOR:			awids
 PLATFORM:		modified eCommerce Shopsoftware 2.0.6.x and higher
 ######################################################################################
@@ -18,7 +18,10 @@ I N F O R M A T I O N
    Error-Messages haben, greift hier ein Fallback, der die Error-Message bei Nicht-
    Ausfüllen der Datums-/Uhrzeit-Auswahl direkt in den Tab der Versandweise einblen-
    det.
-2. Siehe Schritt 4 in der Installations-Anleitung! Wegen dem Umwandeln der Werte in
+2. Shopversionen 2.0.0.0 bis 2.0.4.2 haben noch keinen extra-Ordner im Javascript-
+   Verzeichnis. Der Inhalt muss daher an anderer Stelle eingefügt werden. (Siehe
+   Schritt 4 in der Installationsanleitung!)
+3. Siehe Schritt 4 in der Installations-Anleitung! Wegen dem Umwandeln der Werte in
    HTML-Entitäten (aus Anführungszeichen wird z. B. &quot;) müssen diese  bei Shop-
    version unter 2.0.6.0 manuell in die Sprachdateien eingefügt werden.
 
@@ -47,7 +50,18 @@ I N S T A L L A T I O N
 2. Fuehre die Schritte gemaess der nachfolgenden Einbauanleitung durch.
 3. Installiere das Modul "Click&Collect" im Backend unter Module > Versand Module und
    nimm die erforderlichen Einstellungen im Modul vor.
-4. [NUR Shopversionen 2.0.0.0 - 2.0.5.1]
+4. [NUR Shopversionen 2.0.0.0 - 2.0.4.2]
+   Trage den Inhalt der Datei:
+   
+   - /templates/dein_template/javascript/extra/datepicker.js.php
+   
+   ganz unten in die:
+   
+   - /templates/dein_template/javascript/general_bottom.js.php
+   
+   ein.
+   
+   [NUR Shopversionen 2.0.0.0 - 2.0.5.1]
    Trage Feiertage und gewünschte Abholzeiten ganz unten in den Dateien:
 
    - /lang/english/modules/shipping/clickncollect.php
@@ -65,7 +79,7 @@ E I N B A U A N L E I T U N G
 # /templates/tpl_modified_responsive/css/general_bottom.css.php #
 #################################################################
 
-Fuege nach:
+Füge nach:
 
     DIR_TMPL_CSS.'cookieconsent.css',
 
@@ -77,7 +91,7 @@ folgendes ein:
 # /templates/tpl_modified_responsive/javascript/general_bottom.js.php #
 #######################################################################
 
-Fuege nach:
+Füge nach:
 
     DIR_TMPL_JS.'jquery.sidebar.min.js',
 
