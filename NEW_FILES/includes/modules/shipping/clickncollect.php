@@ -14,7 +14,7 @@ class clickncollect {
         $this->code = 'clickncollect';
         $this->title = MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TITLE;
         $this->description = MODULE_SHIPPING_CLICKNCOLLECT_TEXT_DESCRIPTION;
-        $this->icon = '';
+        $this->icon = DIR_WS_ICONS . 'shipping_clickncollect.png';
         $this->tax_class = ((defined('MODULE_SHIPPING_CLICKNCOLLECT_TAX_CLASS')) ? MODULE_SHIPPING_CLICKNCOLLECT_TAX_CLASS : '');
         $this->sort_order = ((defined('MODULE_SHIPPING_CLICKNCOLLECT_SORT_ORDER')) ? MODULE_SHIPPING_CLICKNCOLLECT_SORT_ORDER : '');
         $this->enabled = ((defined('MODULE_SHIPPING_CLICKNCOLLECT_STATUS') && MODULE_SHIPPING_CLICKNCOLLECT_STATUS == 'True') ? true : false);
@@ -62,7 +62,7 @@ class clickncollect {
         ));
        
         if(xtc_not_null($this->icon)) {
-            $this->quotes['icon'] = xtc_image($this->icon, $this->title);
+            $this->quotes['icon'] = xtc_image($this->icon, $this->title, '40', '40', 'style="float:left;margin: 0px 5px 5px 0px;"');
         }
 
         return $this->quotes;
