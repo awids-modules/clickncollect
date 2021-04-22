@@ -27,20 +27,26 @@ class clickncollect {
     }
 
     function quote($method = '') {
-        global $PHP_SELF;
+        global $PHP_SELF, $messageStack;
+        
+        $errors = '';
+        if (basename($PHP_SELF) != FILENAME_SHOPPING_CART) {
+          if ($messageStack->size('checkout_shipping') > 0) {
+		    $errors = '<div class="errormessage">'.$messageStack->output('checkout_shipping').'</div>';
+		  }
+		}
         
         $collect = '';
         if (basename($PHP_SELF) != FILENAME_SHOPPING_CART) {
           $collectDate = ((isset($_SESSION['shipping']['collectDate']) && !empty($_SESSION['shipping']['collectDate'])) ? $_SESSION['shipping']['collectDate'] : '');
           $collectTime = ((isset($_SESSION['shipping']['collectTime']) && !empty($_SESSION['shipping']['collectTime'])) ? $_SESSION['shipping']['collectTime'] : '');
-
-          $collect = '<br><br>
-    		      <div class="highlightbox checkoutborder">
-    			'.MODULE_SHIPPING_CLICKNCOLLECT_TEXT_DAY.xtc_draw_input_field('collectDate', $collectDate, 'id="collectDate" style="width: 100px"').'
-    			'.MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TIME.xtc_draw_input_field('collectTime', $collectTime, 'id="collectTime" style="width: 60px"').'
-    		      </div>
-    		      <br>'.MODULE_SHIPPING_CLICKNCOLLECT_TEXT_ADDRESS;
-	}
+          $collect = '<br>'.$errors.'<br>
+	    		      <div class="highlightbox checkoutborder">
+		    			'.MODULE_SHIPPING_CLICKNCOLLECT_TEXT_DAY.xtc_draw_input_field('collectDate', $collectDate, 'id="collectDate" style="width: 100px"').'
+		    			'.MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TIME.xtc_draw_input_field('collectTime', $collectTime, 'id="collectTime" style="width: 60px"').'
+	    		      </div>
+	    		      <br>'.MODULE_SHIPPING_CLICKNCOLLECT_TEXT_ADDRESS;
+		}
 
         $address_format = '';
         if (basename($PHP_SELF) != FILENAME_SHOPPING_CART) {
@@ -133,9 +139,11 @@ class clickncollect {
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_STATUS', 'True', '6', '1', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_ALLOWED', '', '6', '2', now())");
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_SORT_ORDER', '0', '6', '3', now())");
-        xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE', '\"24.12.2021\", \"25.12.2021\", \"26.12.2021\", \"31.12.2021\", \"01.01.2022\"', '6', '4', now())");
+		if ($this->version() >= '2.0.6.0') {
+          xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE', '\"24.12.2021\", \"25.12.2021\", \"26.12.2021\", \"31.12.2021\", \"01.01.2022\"', '6', '4', now())");
+          xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES', '\"08:00\", \"08:15\", \"08:30\", \"08:45\", \"09:00\", \"09:15\"', '6', '4', now())");
+		}
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_WEEKLY_TIMES', '0, 6', '6', '4', now())");
-        xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES', '\"08:00\", \"08:15\", \"08:30\", \"08:45\", \"09:00\", \"09:15\"', '6', '4', now())");
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_THEME', 'default', '6', '4', 'xtc_cfg_select_option(array(\'default\', \'dark\'), ', now())");
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_FIRSTNAME', '', '6', '5', now())");
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_LASTNAME', '', '6', '6', now())");
@@ -153,23 +161,38 @@ class clickncollect {
     }
 
     function keys() {
-        return array(
-          'MODULE_SHIPPING_CLICKNCOLLECT_STATUS',
-          'MODULE_SHIPPING_CLICKNCOLLECT_SORT_ORDER',
-          'MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE',
-          'MODULE_SHIPPING_CLICKNCOLLECT_WEEKLY_TIMES',
-          'MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES',
-          'MODULE_SHIPPING_CLICKNCOLLECT_THEME',
-          'MODULE_SHIPPING_CLICKNCOLLECT_ALLOWED',
-          'MODULE_SHIPPING_CLICKNCOLLECT_COMPANY',
-          'MODULE_SHIPPING_CLICKNCOLLECT_FIRSTNAME',
-          'MODULE_SHIPPING_CLICKNCOLLECT_LASTNAME',
-          'MODULE_SHIPPING_CLICKNCOLLECT_STREET_ADDRESS',
-          'MODULE_SHIPPING_CLICKNCOLLECT_SUBURB',
-          'MODULE_SHIPPING_CLICKNCOLLECT_POSTCODE',
-          'MODULE_SHIPPING_CLICKNCOLLECT_CITY',
-          'MODULE_SHIPPING_CLICKNCOLLECT_COUNTRY',
-        );
+		$keys = array();
+		$mainkeys = array();
+		$subkeys = array();
+	
+	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_STATUS';
+	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_SORT_ORDER';
+	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_WEEKLY_TIMES';
+		if ($this->version() >= '2.0.6.0') {
+	  	  $subkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE';
+	  	  $subkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES';
+		}
+	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_THEME';
+	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_ALLOWED';
+	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_COMPANY';
+	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_FIRSTNAME';
+	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_LASTNAME';
+	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_STREET_ADDRESS';
+	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_SUBURB';
+	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_POSTCODE';
+	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_CITY';
+	    $mainkeys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_COUNTRY';
+	
+		$keys = array_merge($mainkeys,$subkeys);
+	
+		return $keys;
+    }
+
+    function version() {
+      $version_query = xtc_db_query("SELECT version FROM database_version WHERE id = 1");
+      $version_result = xtc_db_fetch_array($version_query);
+      $version = str_replace('MOD_', '', $version_result['version']);
+	  return $version;
     }
     
 }

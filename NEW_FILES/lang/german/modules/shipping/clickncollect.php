@@ -9,7 +9,7 @@
 
 define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TITLE', 'Click&amp;Collect');
 define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_DESCRIPTION', 'Lassen Sie Ihre Kunden die bestellte Ware zu einer angegebenen Wunschzeit in Ihrer Gesch&auml;ftsstelle zur Abholung bereitlegen.');
-define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_WAY', 'Wir stellen Ihnen Ihren Einkauf bis zur angegebenen Wunschzeit zusammen und halten ihn zur Abholung f&uuml;r Sie bereit.<br><br>');
+define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_WAY', 'Wir stellen Ihnen Ihren Einkauf bis zur angegebenen Wunschzeit zusammen und halten ihn zur Abholung f&uuml;r Sie bereit.');
 define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_WAY_CONFIRMATION', 'Abholzeit: %s - %s Uhr');
 define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_DAY', 'Abhol-Datum:&nbsp;');
 define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TIME', '&nbsp;Abhol-Uhrzeit:&nbsp;');
@@ -46,4 +46,19 @@ define('MODULE_SHIPPING_CLICKNCOLLECT_CITY_TITLE', 'Ort');
 define('MODULE_SHIPPING_CLICKNCOLLECT_CITY_DESC', 'Geben Sie den Ort an.');
 define('MODULE_SHIPPING_CLICKNCOLLECT_COUNTRY_TITLE', 'Land');
 define('MODULE_SHIPPING_CLICKNCOLLECT_COUNTRY_DESC', 'Geben Sie das Land an.');
+
+// older shop versions
+$version_query = xtc_db_query("SELECT version FROM database_version WHERE id = 1");
+$version_result = xtc_db_fetch_array($version_query);
+$version = str_replace('MOD_', '', $version_result['version']);
+if ($version < '2.0.6.0') {
+  // FEIERTAGE
+  // Geben Sie hier im vorgeschlagenen Format an, an welchem Datum keine Abholung aufgrund eines Feiertages möglich sein soll. 
+  // Ist die Definition leer, werden Feiertage nicht berücksichtigt.
+  defined('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE') or define('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE', '"24.12.2021", "25.12.2021", "26.12.2021", "31.12.2021", "01.01.2022"');
+  // ABHOL-UHRZEITEN
+  // Geben Sie die täglichen Abholzeiten im vorgeschlagenen Format an. 
+  // Ist die Definition leer, werden alle vollen Stunden angezeigt.
+  defined('MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES') or define('MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES', '"08:00", "08:15", "08:30", "08:45", "09:00", "09:15"');
+}
 ?>
