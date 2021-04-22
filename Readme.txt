@@ -1,9 +1,9 @@
 ######################################################################################
-MODUL: 			   Click&Collect (clickncollect)
-VERSION:		      1.0.0
-RELEASE-DATE:	   2021-04-22
-AUTHOR:			   awids
-PLATFORM:		   modified eCommerce Shopsoftware 2.0.6.x and higher
+MODUL: Click&Collect (clickncollect)
+VERSION: 1.0.0
+RELEASE-DATE: 2021-04-22
+AUTHOR: awids
+PLATFORM: modified eCommerce Shopsoftware 2.0.6.x and higher
 ######################################################################################
 
 ######################################################################################
