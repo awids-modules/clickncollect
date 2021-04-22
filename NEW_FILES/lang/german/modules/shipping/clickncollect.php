@@ -16,6 +16,8 @@ define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TIME', '&nbsp;Abhol-Uhrzeit:&nbsp;');
 define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_ADDRESS', '<strong>Abholadresse:</strong>');
 define('MODULE_SHIPPING_CLICKNCOLLECT_ERROR_DAY', 'Bitte geben Sie ein Abhol-Datum an.');
 define('MODULE_SHIPPING_CLICKNCOLLECT_ERROR_TIME', 'Bitte geben Sie eine Abhol-Zeit an.');
+define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_TITLE', 'Vorlaufzeit');
+define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_DESC', 'Wie viele Tage Vorlaufzeit ben&ouml;tigen Sie, um die Bestellung abholfertig zu machen?');
 define('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE_TITLE', 'Feiertage');
 define('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE_DESC', 'Geben Sie hier im vorgeschlagenen Format an, an welchem Datum keine Abholung aufgrund eines Feiertages m&ouml;glich sein soll. (Ist das Input leer, werden Feiertage nicht ber&uuml;cksichtigt.)');
 define('MODULE_SHIPPING_CLICKNCOLLECT_WEEKLY_TIMES_TITLE', 'Wochentage verbieten?');
