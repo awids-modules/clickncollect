@@ -1,6 +1,6 @@
 ######################################################################################
 MODUL: 			Click&Collect (clickncollect)
-VERSION:		1.0.0
+VERSION:		   1.0.0
 RELEASE-DATE:	2021-04-22
 AUTHOR:			awids
 PLATFORM:		modified eCommerce Shopsoftware 2.0.6.x and higher
@@ -10,9 +10,8 @@ PLATFORM:		modified eCommerce Shopsoftware 2.0.6.x and higher
 I N F O R M A T I O N 
 ######################################################################################
 
-################
-# Neue Dateien #
-################
+Neue Dateien
+#############
 
 - /includes/modules/shipping/clickncollect.php
 - /includes/extra/checkout/checkout_requirements/99_clickncollect.php
@@ -40,9 +39,8 @@ I N S T A L L A T I O N
 E I N B A U A N L E I T U N G
 ######################################################################################
 
-#################################################################
-# /templates/tpl_modified_responsive/css/general_bottom.css.php #
-#################################################################
+/templates/tpl_modified_responsive/css/general_bottom.css.php
+##############################################################
 
 Fuege nach:
 
@@ -52,9 +50,9 @@ folgendes ein:
 
     DIR_TMPL_CSS.'jquery.datetimepicker.css',
 
-#######################################################################
-# /templates/tpl_modified_responsive/javascript/general_bottom.js.php #
-#######################################################################
+
+/templates/tpl_modified_responsive/javascript/general_bottom.js.php
+###################################################################
 
 Fuege nach:
 
