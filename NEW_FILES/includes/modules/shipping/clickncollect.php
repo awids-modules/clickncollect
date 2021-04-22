@@ -29,14 +29,17 @@ class clickncollect {
     function quote($method = '') {
         global $PHP_SELF;
         
-        $collectDate = ((isset($_SESSION['shipping']['collectDate']) && !empty($_SESSION['shipping']['collectDate'])) ? $_SESSION['shipping']['collectDate'] : '');
-        $collectTime = ((isset($_SESSION['shipping']['collectTime']) && !empty($_SESSION['shipping']['collectTime'])) ? $_SESSION['shipping']['collectTime'] : '');
+        $collect = '';
+        if (basename($PHP_SELF) != FILENAME_SHOPPING_CART) {
+          $collectDate = ((isset($_SESSION['shipping']['collectDate']) && !empty($_SESSION['shipping']['collectDate'])) ? $_SESSION['shipping']['collectDate'] : '');
+          $collectTime = ((isset($_SESSION['shipping']['collectTime']) && !empty($_SESSION['shipping']['collectTime'])) ? $_SESSION['shipping']['collectTime'] : '');
 
-        $collect = '<div class="highlightbox checkoutborder">
-    					'.MODULE_SHIPPING_CLICKNCOLLECT_TEXT_DAY.xtc_draw_input_field('collectDate', $collectDate, 'id="collectDate" style="width: 100px"').'
-    					'.MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TIME.xtc_draw_input_field('collectTime', $collectTime, 'id="collectTime" style="width: 60px"').'
-    				</div>
-        			<br>'.MODULE_SHIPPING_CLICKNCOLLECT_TEXT_ADDRESS;
+          $collect = '<div class="highlightbox checkoutborder">
+    			'.MODULE_SHIPPING_CLICKNCOLLECT_TEXT_DAY.xtc_draw_input_field('collectDate', $collectDate, 'id="collectDate" style="width: 100px"').'
+    			'.MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TIME.xtc_draw_input_field('collectTime', $collectTime, 'id="collectTime" style="width: 60px"').'
+    		      </div>
+    		      <br>'.MODULE_SHIPPING_CLICKNCOLLECT_TEXT_ADDRESS;
+	}
 
         $address_format = '';
         if (basename($PHP_SELF) != FILENAME_SHOPPING_CART) {
