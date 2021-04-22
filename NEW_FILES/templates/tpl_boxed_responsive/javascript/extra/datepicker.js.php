@@ -9,6 +9,8 @@
 
 if (defined('MODULE_SHIPPING_CLICKNCOLLECT_STATUS') && MODULE_SHIPPING_CLICKNCOLLECT_STATUS == 'True') {
 	if (basename($PHP_SELF) == FILENAME_CHECKOUT_SHIPPING) { 
+	  $vorlaufzeit = '+'.MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME.' days';
+	  $min_date = date("d.m.Y", strtotime($vorlaufzeit));
 	  echo '<script type="text/javascript">
 			  $(document).ready(function(){
 			    $.datetimepicker.setLocale("'.$_SESSION['language_code'].'");    
@@ -21,7 +23,7 @@ if (defined('MODULE_SHIPPING_CLICKNCOLLECT_STATUS') && MODULE_SHIPPING_CLICKNCOL
 			      ],
 			      formatDate:"d.m.Y",
 			      format:"d.m.Y",
-			      minDate:0,
+			      minDate:"'.$min_date.'",
 			      theme:"'.MODULE_SHIPPING_CLICKNCOLLECT_THEME.'",
 			      disabledWeekDays: [
 			        '.MODULE_SHIPPING_CLICKNCOLLECT_WEEKLY_TIMES.'
