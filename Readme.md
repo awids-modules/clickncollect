@@ -8,16 +8,9 @@ VERSION: 1.0.1 / RELEASE-DATE: 2021-04-22 / AUTHOR: awids / PLATFORM: modified e
 
 ### Unterschiede bei Shopversionen von 2.0.0.0 bis 2.0.5.1
 
-1. Da Shopversionen vor 2.0.6.0 in der /checkout_shipping.php noch keine Ausgabe für
-   Error-Messages haben, greift hier ein Fallback, der die Error-Message bei Nicht-
-   Ausfüllen der Datums-/Uhrzeit-Auswahl direkt in den Tab der Versandweise einblen-
-   det.
-2. Shopversionen 2.0.0.0 bis 2.0.4.2 haben noch keinen extra-Ordner im Javascript-
-   Verzeichnis. Der Inhalt muss daher an anderer Stelle eingefügt werden. (Siehe
-   Schritt 4 in der Installationsanleitung!)
-3. Siehe Schritt 4 in der Installations-Anleitung! Wegen dem Umwandeln der Werte in
-   HTML-Entitäten (aus Anführungszeichen wird z. B. &quot;) müssen diese  bei Shop-
-   version unter 2.0.6.0 manuell in die Sprachdateien eingefügt werden.
+1. Da Shopversionen vor 2.0.6.0 in der /checkout_shipping.php noch keine Ausgabe für Error-Messages haben, greift hier ein Fallback, der die Error-Message bei Nicht-Ausfüllen der Datums-/Uhrzeit-Auswahl direkt in den Tab der Versandweise einblendet.
+2. Shopversionen 2.0.0.0 bis 2.0.4.2 haben noch keinen extra-Ordner im Javascript-Verzeichnis. Der Inhalt muss daher an anderer Stelle eingefügt werden. (Siehe    Schritt 4 in der Installationsanleitung!)
+3. Siehe Schritt 4 in der Installations-Anleitung! Wegen dem Umwandeln der Werte in HTML-Entitäten (aus Anführungszeichen wird z. B. &quot;) müssen diese  bei Shopversion unter 2.0.6.0 manuell in die Sprachdateien eingefügt werden.
 
 ### Neue Dateien
 
@@ -35,11 +28,9 @@ VERSION: 1.0.1 / RELEASE-DATE: 2021-04-22 / AUTHOR: awids / PLATFORM: modified e
 
 ## I N S T A L L A T I O N
 
-1. Lade alle Dateien aus dem Ordner NEW_FILES anhand der vorgegebenen Ordner-Struktur
-   hoch. Es werden dabei keine Dateien ueberschrieben.
+1. Lade alle Dateien aus dem Ordner NEW_FILES anhand der vorgegebenen Ordner-Struktur hoch. Es werden dabei keine Dateien ueberschrieben.
 2. Fuehre die Schritte gemaess der nachfolgenden Einbauanleitung durch.
-3. Installiere das Modul "Click&Collect" im Backend unter Module > Versand Module und
-   nimm die erforderlichen Einstellungen im Modul vor.
+3. Installiere das Modul "Click&Collect" im Backend unter Module > Versand Module und nimm die erforderlichen Einstellungen im Modul vor.
 4. <b>NUR Shopversionen 2.0.0.0 - 2.0.4.2</b>
    Trage den Inhalt der Datei:
    
