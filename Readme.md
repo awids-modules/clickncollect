@@ -14,16 +14,25 @@ VERSION: 1.0.1 / RELEASE-DATE: 2021-04-22 / AUTHOR: awids / PLATFORM: modified e
 
 ### Neue Dateien
 
-- /images/icons/shipping_clickncollect.png
-- /includes/modules/shipping/clickncollect.php
-- /includes/extra/checkout/checkout_requirements/99_clickncollect.php
-- /lang/english/extra/clickncollect.php
-- /lang/english/modules/shipping/clickncollect.php
-- /lang/german/extra/clickncollect.php
-- /lang/german/modules/shipping/clickncollect.php
-- /templates/tpl_modified_responsive/css/jquery.datetimepicker.css
-- /templates/tpl_modified_responsive/javascript/extra/datepicker.js.php
-- /templates/tpl_modified_responsive/javascript/jquery.datetimepicker.full.min.js
+- /images/icons/shipping_clickncollect.png (v1.0.1)
+- /includes/modules/shipping/clickncollect.php (v1.0.0)
+- /includes/modules/payment/cash_on_collect.php (v1.0.2)
+- /includes/extra/checkout/checkout_requirements/99_clickncollect.php (v1.0.0)
+- /lang/english/extra/clickncollect.php (v1.0.0)
+- /lang/english/modules/shipping/clickncollect.php (v1.0.0)
+- /lang/english/modules/payment/cash_on_collect.php (v1.0.2)
+- /lang/german/extra/clickncollect.php (v1.0.0)
+- /lang/german/modules/shipping/clickncollect.php (v1.0.0)
+- /lang/german/modules/payment/cash_on_collect.php (v1.0.2)
+- /templates/tpl_modified/css/jquery.datetimepicker.css (v1.0.1)
+- /templates/tpl_modified/javascript/extra/datepicker.js.php (v1.0.1)
+- /templates/tpl_modified/javascript/jquery.datetimepicker.full.min.js (v1.0.1)
+- /templates/tpl_modified_responsive/css/jquery.datetimepicker.css (v1.0.0)
+- /templates/tpl_modified_responsive/javascript/extra/datepicker.js.php (v1.0.0)
+- /templates/tpl_modified_responsive/javascript/jquery.datetimepicker.full.min.js (v1.0.0)
+- /templates/tpl_boxed_responsive/css/jquery.datetimepicker.css (v1.0.1)
+- /templates/tpl_boxed_responsive/javascript/extra/datepicker.js.php (v1.0.1)
+- /templates/tpl_boxed_responsive/javascript/jquery.datetimepicker.full.min.js (v1.0.1)
 
 
 ## I N S T A L L A T I O N
