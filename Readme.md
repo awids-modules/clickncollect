@@ -65,7 +65,8 @@ seit Version 1.0.0
 1. Lade alle Dateien aus dem Ordner NEW_FILES anhand der vorgegebenen Ordner-Struktur hoch. Es werden dabei keine Dateien ueberschrieben.
 2. Fuehre die Schritte gemaess der nachfolgenden Einbauanleitung durch.
 3. Installiere das Modul "Click&Collect" im Backend unter Module > Versand Module und nimm die erforderlichen Einstellungen im Modul vor.
-4. <b>NUR Shopversionen 2.0.0.0 - 2.0.4.2:</b>
+4. NUR Shopversionen 2.0.0.0 - 2.0.4.2:
+
    Trage den Inhalt der Datei:
    
    - /templates/dein_template/javascript/extra/datepicker.js.php
@@ -74,7 +75,7 @@ seit Version 1.0.0
    
    - /templates/dein_template/javascript/general_bottom.js.php
    
-   ein.
+   ein oder includiere sie hierhin.
 
 
 ## E I N B A U A N L E I T U N G
