@@ -34,7 +34,7 @@ seit Version 1.0.0
 ### Unterschiede bei Shopversionen von 2.0.0.0 bis 2.0.5.1
 
 - Da Shopversionen vor 2.0.6.0 in der /checkout_shipping.php noch keine Ausgabe für Error-Messages haben, greift hier ein Fallback, der die Error-Message bei Nicht-Ausfüllen der Datums-/Uhrzeit-Auswahl direkt in den Tab der Versandweise einblendet. Du musst nichts weiter unternehmen.
-2. Die Shopversionen 2.0.0.0 bis 2.0.4.2 haben noch keinen /extra/-Ordner im Javascript-Verzeichnis. Der Inhalt muss daher an anderer Stelle eingefügt werden. (Siehe    Schritt 4 in der Installationsanleitung!)
+- Die Shopversionen 2.0.0.0 bis 2.0.4.2 haben noch keinen /extra/-Ordner im Javascript-Verzeichnis. Der Inhalt muss daher an anderer Stelle eingefügt werden. (Siehe    Schritt 4 in der Installationsanleitung!)
 
 
 ### Neue Dateien
