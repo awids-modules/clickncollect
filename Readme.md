@@ -10,7 +10,7 @@ VERSION: 1.0.1 / RELEASE-DATE: 2021-04-22 / AUTHOR: awids / PLATFORM: modified e
 
 1. Da Shopversionen vor 2.0.6.0 in der /checkout_shipping.php noch keine Ausgabe für Error-Messages haben, greift hier ein Fallback, der die Error-Message bei Nicht-Ausfüllen der Datums-/Uhrzeit-Auswahl direkt in den Tab der Versandweise einblendet.
 2. Shopversionen 2.0.0.0 bis 2.0.4.2 haben noch keinen extra-Ordner im Javascript-Verzeichnis. Der Inhalt muss daher an anderer Stelle eingefügt werden. (Siehe    Schritt 4 in der Installationsanleitung!)
-3. Siehe Schritt 4 in der Installations-Anleitung! Wegen dem Umwandeln der Werte in HTML-Entitäten (aus Anführungszeichen wird z. B. <code>&amp;quot;</code>) müssen diese  bei Shopversion unter 2.0.6.0 manuell in die Sprachdateien eingefügt werden.
+3. Siehe Schritt 4 in der Installations-Anleitung! Wegen dem Umwandeln der Werte in HTML-Entitäten (aus Anführungszeichen wird z. B. <code>&amp;quot;</code> ) müssen diese  bei Shopversion unter 2.0.6.0 manuell in die Sprachdateien eingefügt werden.
 
 ### Neue Dateien
 
