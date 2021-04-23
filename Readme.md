@@ -5,14 +5,37 @@
 - AUTHOR: awids
 - PLATFORM: modified eCommerce Shopsoftware 2.0.x.x and higher
 
+## C H A N G E L O G
+
+seit Version 1.0.2
+- Eingabe von Feiertagen nun für alle kompatiblen Shopversionen übers Backend möglich
+- Eingabe von Abhol-Uhrzeiten nun für alle kompatiblen Shopversionen übers Backend möglich
+- in den Moduleinstellungen festlegbare Vorlaufzeit von X Tagen, bevor die Bestellung abgeholt werden kann
+- Kundenhinweis mit Anzahl der Tage im Checkout, wenn Vorlaufzeit größer als 0 Tage
+- eigenes/optionales Modul für Barzahlung bei Abholung hinzugefügt
+
+seit Version 1.0.1
+- Eingabe von Feiertagen über Sprachdateien
+- Eingabe von Abhol-Uhrzeiten über Sprachdateien
+- Code bereinigt für besseren PHP7.4/PHP8.x-Support
+- fehlerhafte Ansicht im Warenkorb bereinigt
+- Modul-Icon hinzugefügt
+
+seit Version 1.0.0
+- Modul erstellt mit Integration des jQuery-DateTimePickers
+- jQuery-DateTimePicker: keine Auswahl eines bereits vergangenen Datums möglich
+- jQuery-DateTimePicker: Theme-Auswahl über Modul-Einstellungen
+- jQuery-DateTimePicker: bestimmte Wochentage können über Modul-Einstellungen verboten werden
+- jQuery-DateTimePicker: Feiertage können über die Modul-Einstellungen definiert und somit verboten werden
+- jQuery-DateTimePicker: Abhol-Uhrzeiten können vorgegeben/festgelegt werden
 
 ## I N F O R M A T I O N 
 
-### Unterschiede bei Shopversionen von 2.0.0.0 bis 2.0.5.1
+### Unterschiede bei Shopversionen von 2.0.0.0 bis 2.0.4.2
 
-1. Da Shopversionen vor 2.0.6.0 in der /checkout_shipping.php noch keine Ausgabe für Error-Messages haben, greift hier ein Fallback, der die Error-Message bei Nicht-Ausfüllen der Datums-/Uhrzeit-Auswahl direkt in den Tab der Versandweise einblendet.
-2. Shopversionen 2.0.0.0 bis 2.0.4.2 haben noch keinen extra-Ordner im Javascript-Verzeichnis. Der Inhalt muss daher an anderer Stelle eingefügt werden. (Siehe    Schritt 4 in der Installationsanleitung!)
-3. Siehe Schritt 4 in der Installations-Anleitung! Wegen dem Umwandeln der Werte in HTML-Entitäten (aus Anführungszeichen wird z. B. <code>&amp;quot;</code> ) müssen diese  bei Shopversion unter 2.0.6.0 manuell in die Sprachdateien eingefügt werden.
+- Da Shopversionen vor 2.0.6.0 in der /checkout_shipping.php noch keine Ausgabe für Error-Messages haben, greift hier ein Fallback, der die Error-Message bei Nicht-Ausfüllen der Datums-/Uhrzeit-Auswahl direkt in den Tab der Versandweise einblendet. Du musst nichts weiter unternehmen.
+2. Die Shopversionen 2.0.0.0 bis 2.0.4.2 haben noch keinen /extra/-Ordner im Javascript-Verzeichnis. Der Inhalt muss daher an anderer Stelle eingefügt werden. (Siehe    Schritt 4 in der Installationsanleitung!)
+
 
 ### Neue Dateien
 
@@ -52,15 +75,6 @@
    - /templates/dein_template/javascript/general_bottom.js.php
    
    ein.
-   
-   <b>NUR Shopversionen 2.0.0.0 - 2.0.5.1:</b>
-   Trage Feiertage und gewünschte Abholzeiten ganz unten in den Dateien:
-
-   - /lang/english/modules/shipping/clickncollect.php
-   - /lang/german/modules/shipping/clickncollect.php
-
-   ein. Der Format ist schon vorgegeben. Lässt du die Definitionen leer, erfolgt keine
-   Einschränkung im jeweiligen Bereich.
 
 
 ## E I N B A U A N L E I T U N G
