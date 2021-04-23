@@ -1,10 +1,10 @@
 <?PHP
 ######################################################################################
-# MODUL: 			Click&Collect (clickncollect)
-# VERSION:			1.0.0
-# RELEASE-DATE:		2021-04-22
-# AUTHOR:			awids
-# PLATFORM:			modified eCommerce Shopsoftware 2.0.6.x and higher
+# MODUL: Click&Collect (clickncollect)
+# VERSION: 1.0.2
+# RELEASE-DATE: 2021-04-25
+# AUTHOR: awids
+# PLATFORM: modified eCommerce Shopsoftware 2.0.x.x
 ######################################################################################
 
 define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TITLE', 'Click&amp;Collect');
@@ -18,12 +18,13 @@ define('MODULE_SHIPPING_CLICKNCOLLECT_ERROR_DAY', 'Bitte geben Sie ein Abhol-Dat
 define('MODULE_SHIPPING_CLICKNCOLLECT_ERROR_TIME', 'Bitte geben Sie eine Abhol-Zeit an.');
 define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_TITLE', 'Vorlaufzeit');
 define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_DESC', 'Wie viele Tage Vorlaufzeit ben&ouml;tigen Sie, um die Bestellung abholfertig zu machen?');
+define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_TEXT', ' Beachten Sie bitte, dass wir %s Tag(e) Vorlaufzeit ben&ouml;tigen.');
 define('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE_TITLE', 'Feiertage');
-define('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE_DESC', 'Geben Sie hier im vorgeschlagenen Format an, an welchem Datum keine Abholung aufgrund eines Feiertages m&ouml;glich sein soll. (Ist das Input leer, werden Feiertage nicht ber&uuml;cksichtigt.)');
+define('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE_DESC', 'Geben Sie hier im Format "dd.mm" (komma-separiert, ohne Jahreszahl) an, an welchem Datum keine Abholung aufgrund eines Feiertages m&ouml;glich sein soll. (Ist das Input leer, werden Feiertage nicht ber&uuml;cksichtigt.)');
 define('MODULE_SHIPPING_CLICKNCOLLECT_WEEKLY_TIMES_TITLE', 'Wochentage verbieten?');
 define('MODULE_SHIPPING_CLICKNCOLLECT_WEEKLY_TIMES_DESC', 'Geben Sie hier an, an welchen Tagen keine Abholung m&ouml;glich sein soll. (Ist das Input leer, kann eine Bestellung an jedem Wochentag abgeholt werden.)<br><br>0 = Sonntag | 1 = Montag | 2 = Dienstag | 3 = Mittwoch | 4 = Donnerstag | 5 = Freitag | 6 = Samstag');
 define('MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES_TITLE', 'T&auml;gliche Abholzeiten');
-define('MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES_DESC', 'Geben Sie die t&auml;glichen Abholzeiten im vorgeschlagenen Format an. (Ist das Input leer, werden alle vollen Stunden angezeigt.)');
+define('MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES_DESC', 'Geben Sie die t&auml;glichen Abholzeiten im Format "hh:mm" an. (Ist das Input leer, werden alle vollen Stunden angezeigt.)');
 define('MODULE_SHIPPING_CLICKNCOLLECT_THEME_TITLE', 'Theme');
 define('MODULE_SHIPPING_CLICKNCOLLECT_THEME_DESC', 'W&auml;hlen Sie hier das Theme f&uuml;r den Date-/Timer-Picker aus.');
 define('MODULE_SHIPPING_CLICKNCOLLECT_ALLOWED_TITLE' , 'Erlaubte Zonen');
@@ -48,19 +49,4 @@ define('MODULE_SHIPPING_CLICKNCOLLECT_CITY_TITLE', 'Ort');
 define('MODULE_SHIPPING_CLICKNCOLLECT_CITY_DESC', 'Geben Sie den Ort an.');
 define('MODULE_SHIPPING_CLICKNCOLLECT_COUNTRY_TITLE', 'Land');
 define('MODULE_SHIPPING_CLICKNCOLLECT_COUNTRY_DESC', 'Geben Sie das Land an.');
-
-// older shop versions
-$version_query = xtc_db_query("SELECT version FROM database_version WHERE id = 1");
-$version_result = xtc_db_fetch_array($version_query);
-$version = str_replace('MOD_', '', $version_result['version']);
-if ($version < '2.0.6.0') {
-  // FEIERTAGE
-  // Geben Sie hier im vorgeschlagenen Format an, an welchem Datum keine Abholung aufgrund eines Feiertages möglich sein soll. 
-  // Ist die Definition leer, werden Feiertage nicht berücksichtigt.
-  defined('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE') or define('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE', '"24.12.2021", "25.12.2021", "26.12.2021", "31.12.2021", "01.01.2022"');
-  // ABHOL-UHRZEITEN
-  // Geben Sie die täglichen Abholzeiten im vorgeschlagenen Format an. 
-  // Ist die Definition leer, werden alle vollen Stunden angezeigt.
-  defined('MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES') or define('MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES', '"08:00", "08:15", "08:30", "08:45", "09:00", "09:15"');
-}
 ?>
