@@ -15,15 +15,15 @@ seit Version 1.0.2
 - eigenes/optionales Modul für Barzahlung bei Abholung hinzugefügt
 
 seit Version 1.0.1
-- Eingabe von Feiertagen über Sprachdateien
-- Eingabe von Abhol-Uhrzeiten über Sprachdateien
+- Eingabe von Feiertagen in Sprachdateien ausgelagert
+- Eingabe von Abhol-Uhrzeiten in Sprachdateien ausgelagert
 - Code bereinigt für besseren PHP7.4/PHP8.x-Support
 - fehlerhafte Ansicht im Warenkorb bereinigt
 - Modul-Icon hinzugefügt
 
 seit Version 1.0.0
 - Modul erstellt mit Integration des jQuery-DateTimePickers
-- jQuery-DateTimePicker: keine Auswahl eines bereits vergangenen Datums möglich
+- jQuery-DateTimePicker: keine Auswahl eines in der Vergangenheit liegenden Datums möglich
 - jQuery-DateTimePicker: Theme-Auswahl über Modul-Einstellungen
 - jQuery-DateTimePicker: bestimmte Wochentage können über Modul-Einstellungen verboten werden
 - jQuery-DateTimePicker: Feiertage können über die Modul-Einstellungen definiert und somit verboten werden
@@ -31,7 +31,7 @@ seit Version 1.0.0
 
 ## I N F O R M A T I O N 
 
-### Unterschiede bei Shopversionen von 2.0.0.0 bis 2.0.4.2
+### Unterschiede bei Shopversionen von 2.0.0.0 bis 2.0.5.1
 
 - Da Shopversionen vor 2.0.6.0 in der /checkout_shipping.php noch keine Ausgabe für Error-Messages haben, greift hier ein Fallback, der die Error-Message bei Nicht-Ausfüllen der Datums-/Uhrzeit-Auswahl direkt in den Tab der Versandweise einblendet. Du musst nichts weiter unternehmen.
 2. Die Shopversionen 2.0.0.0 bis 2.0.4.2 haben noch keinen /extra/-Ordner im Javascript-Verzeichnis. Der Inhalt muss daher an anderer Stelle eingefügt werden. (Siehe    Schritt 4 in der Installationsanleitung!)
