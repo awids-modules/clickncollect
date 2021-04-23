@@ -1,10 +1,10 @@
 <?PHP
 ######################################################################################
-# MODUL: 			Click&Collect (clickncollect)
-# VERSION:			1.0.0
-# RELEASE-DATE:		2021-04-22
-# AUTHOR:			awids
-# PLATFORM:			modified eCommerce Shopsoftware 2.0.6.x and higher
+# MODUL: Click&Collect (clickncollect)
+# VERSION: 1.0.2
+# RELEASE-DATE: 2021-04-25
+# AUTHOR: awids
+# PLATFORM: modified eCommerce Shopsoftware 2.0.x.x
 ######################################################################################
 
 define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TITLE', 'Click&amp;Collect');
@@ -16,12 +16,13 @@ define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TIME', '&nbsp;Pick-Up time:&nbsp;');
 define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_ADDRESS', '<strong>Pick-Up address:</strong>');
 define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_TITLE', 'Lead time');
 define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_DESC', 'How many days lead time do you need to get the order ready for collection?');
+define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_TEXT', ' Please note that we require 2 day(s) lead time.');
 define('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE_TITLE', 'Public holidays');
-define('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE_DESC', 'Enter here in the suggested format the date on which collection should not be possible due to a public holiday. (If the input is empty, holidays are not taken into account.)');
+define('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE_DESC', 'Enter here in the format "dd.mm" (comma separated, without year number) the date on which no collection should be possible due to a public holiday. (If the input is empty, holidays are not taken into account.)');
 define('MODULE_SHIPPING_CLICKNCOLLECT_WEEKLY_TIMES_TITLE', 'Forbid days of the week?');
 define('MODULE_SHIPPING_CLICKNCOLLECT_WEEKLY_TIMES_DESC', 'Specify here the days on which collection should not be possible. (If the input is empty, an order can be picked up on any day of the week.)<br><br>0 = Sunday | 1 = Monday | 2 = Tuesday | 3 = Wednesday | 4 = Thursday | 5 = Friday | 6 = Saturday');
 define('MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES_TITLE', 'Daily pick-up times');
-define('MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES_DESC', 'Include the daily pick-up times in the suggested format. (If the input is empty, all full hours are displayed.)');
+define('MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES_DESC', 'Enter the daily pick-up times in the format "hh:mm". (If the input is empty, all full hours are displayed.)');
 define('MODULE_SHIPPING_CLICKNCOLLECT_THEME_TITLE', 'Theme');
 define('MODULE_SHIPPING_CLICKNCOLLECT_THEME_DESC', 'Select the theme for the date / timer picker here.');
 define('MODULE_SHIPPING_CLICKNCOLLECT_ALLOWED_TITLE' , 'Allowed Zones');
@@ -46,19 +47,4 @@ define('MODULE_SHIPPING_CLICKNCOLLECT_CITY_TITLE', 'City');
 define('MODULE_SHIPPING_CLICKNCOLLECT_CITY_DESC', 'Enter the city.');
 define('MODULE_SHIPPING_CLICKNCOLLECT_COUNTRY_TITLE', 'Country');
 define('MODULE_SHIPPING_CLICKNCOLLECT_COUNTRY_DESC', 'Enter the country.');
-
-// older shop versions
-$version_query = xtc_db_query("SELECT version FROM database_version WHERE id = 1");
-$version_result = xtc_db_fetch_array($version_query);
-$version = str_replace('MOD_', '', $version_result['version']);
-if ($version < '2.0.6.0') {
-  // FEIERTAGE
-  // Geben Sie hier im vorgeschlagenen Format an, an welchem Datum keine Abholung aufgrund eines Feiertages möglich sein soll. 
-  // Ist die Definition leer, werden Feiertage nicht berücksichtigt.
-  defined('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE') or define('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE', '"24.12.2021", "25.12.2021", "26.12.2021", "31.12.2021", "01.01.2022"');
-  // ABHOL-UHRZEITEN
-  // Geben Sie die täglichen Abholzeiten im vorgeschlagenen Format an. 
-  // Ist die Definition leer, werden alle vollen Stunden angezeigt.
-  defined('MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES') or define('MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES', '"08:00", "08:15", "08:30", "08:45", "09:00", "09:15"');
-}
 ?>
