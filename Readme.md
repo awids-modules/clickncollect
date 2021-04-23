@@ -1,7 +1,9 @@
 # MODUL: Click&Collect (clickncollect)
-<img src="https://raw.githubusercontent.com/awids-modules/clickncollect/main/images/clickncollect.png" alt="Click&Collect" />
 
-VERSION: 1.0.1 / RELEASE-DATE: 2021-04-22 / AUTHOR: awids / PLATFORM: modified eCommerce Shopsoftware 2.0.x.x and higher
+VERSION: 1.0.2
+RELEASE-DATE: 2021-04-25
+AUTHOR: awids
+PLATFORM: modified eCommerce Shopsoftware 2.0.x.x and higher
 
 
 ## I N F O R M A T I O N 
