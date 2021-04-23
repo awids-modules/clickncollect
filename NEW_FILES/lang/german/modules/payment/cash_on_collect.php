@@ -1,20 +1,11 @@
 <?php
-
-/* -----------------------------------------------------------------------------------------
-   $Id: cash.php 11578 2019-03-21 09:41:25Z GTB $
-
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
-
-   Copyright (c) 2003 XT-Commerce
-   -----------------------------------------------------------------------------------------
-   based on:
-   (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(cod.php,v 1.28 2003/02/14); www.oscommerce.com
-   (c) 2003	 nextcommerce (invoice.php,v 1.4 2003/08/13); www.nextcommerce.org
-
-   Released under the GNU General Public License
-   ---------------------------------------------------------------------------------------*/
+######################################################################################
+# MODUL: Click&Collect (clickncollect)
+# VERSION: 1.0.2
+# RELEASE-DATE: 2021-04-25
+# AUTHOR: awids
+# PLATFORM: modified eCommerce Shopsoftware 2.0.x.x
+######################################################################################
 
 define('MODULE_PAYMENT_CASH_ON_COLLECT_TEXT_DESCRIPTION', 'Barzahlung bei Abholung');
 define('MODULE_PAYMENT_CASH_ON_COLLECT_TEXT_TITLE', 'Barzahlung (Click&amp;Collect)');
