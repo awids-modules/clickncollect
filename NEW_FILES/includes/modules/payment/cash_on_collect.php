@@ -1,20 +1,11 @@
 <?php
-
-/* -----------------------------------------------------------------------------------------
-   $Id: cash_on_collect.php 13440 2021-03-02 12:15:47Z Tomcraft $
-
-   XT-Commerce - community made shopping
-   http://www.xt-commerce.com
-
-   Copyright (c) 2003 XT-Commerce
-   -----------------------------------------------------------------------------------------
-   based on: 
-   (c) 2000-2001 The Exchange Project  (earlier name of osCommerce)
-   (c) 2002-2003 osCommerce(moneyorder.php,v 1.10 2003/01/29); www.oscommerce.com
-   (c) 2003  nextcommerce (moneyorder.php,v 1.7 2003/08/24); www.nextcommerce.org
-
-   Released under the GNU General Public License
-   ---------------------------------------------------------------------------------------*/
+######################################################################################
+# MODUL: Click&Collect (clickncollect)
+# VERSION: 1.0.2
+# RELEASE-DATE: 2021-04-25
+# AUTHOR: awids
+# PLATFORM: modified eCommerce Shopsoftware 2.0.x.x
+######################################################################################
 
 class cash_on_collect {
   var $code, $title, $description, $enabled;
