@@ -1,16 +1,27 @@
 <?php 
 ######################################################################################
-# MODUL: 			Click&Collect (clickncollect)
-# VERSION:			1.0.0
-# RELEASE-DATE:		2021-04-22
-# AUTHOR:			awids
-# PLATFORM:			modified eCommerce Shopsoftware 2.0.6.x and higher
+# MODUL: Click&Collect (clickncollect)
+# VERSION: 1.0.2
+# RELEASE-DATE: 2021-04-25
+# AUTHOR: awids
+# PLATFORM: modified eCommerce Shopsoftware 2.0.x.x
 ######################################################################################
 
 if (defined('MODULE_SHIPPING_CLICKNCOLLECT_STATUS') && MODULE_SHIPPING_CLICKNCOLLECT_STATUS == 'True') {
 	if (basename($PHP_SELF) == FILENAME_CHECKOUT_SHIPPING) { 
+	  
+	  function format4DateTimePicker($array, $isDate, $spacer) {
+	    $array = str_replace(' ', '', $array);
+	    $dates = explode(',', $array);
+	    foreach ($dates as $date) {
+		  if ($date != '') $output .= '"'.$date.(($isDate == true) ? '.'.date("Y") : '').'"'.((end($dates) == $date) ? '' : $spacer);
+	    }
+	    return $output;
+	  }
+	  
 	  $vorlaufzeit = '+'.MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME.' days';
 	  $min_date = date("d.m.Y", strtotime($vorlaufzeit));
+	  	  
 	  echo '<script type="text/javascript">
 			  $(document).ready(function(){
 			    $.datetimepicker.setLocale("'.$_SESSION['language_code'].'");    
@@ -19,7 +30,7 @@ if (defined('MODULE_SHIPPING_CLICKNCOLLECT_STATUS') && MODULE_SHIPPING_CLICKNCOL
 	 		      datepicker:true, 
 			      timepicker:false, 
 			      disabledDates: [
-			        '.MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE.'
+			        '.format4DateTimePicker(MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE, true, ', ').'
 			      ],
 			      formatDate:"d.m.Y",
 			      format:"d.m.Y",
@@ -30,14 +41,13 @@ if (defined('MODULE_SHIPPING_CLICKNCOLLECT_STATUS') && MODULE_SHIPPING_CLICKNCOL
 			      ]
 			    });
 			    $("#collectTime").datetimepicker({
-			      dayOfWeekStart:1,
+			      format:"H:i",
 			      datepicker:false, 
 			      timepicker:true, 
-			      format:"H:i",
-			      minDate:0,
+			      formatTime:"H:i",
 			      theme:"'.MODULE_SHIPPING_CLICKNCOLLECT_THEME.'",
 			      allowTimes: [
-			        '.MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES.'
+			        '.((empty(MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES)) ? format4DateTimePicker(MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES, false, ', ') : '').'
 			      ]
 			    });
 			  });
