@@ -1,10 +1,10 @@
 <?PHP
 ######################################################################################
-# MODUL: 			Click&Collect (clickncollect)
-# VERSION:			1.0.0
-# RELEASE-DATE:		2021-04-22
-# AUTHOR:			awids
-# PLATFORM:			modified eCommerce Shopsoftware 2.0.6.x and higher
+# MODUL: Click&Collect (clickncollect)
+# VERSION: 1.0.2
+# RELEASE-DATE: 2021-04-25
+# AUTHOR: awids
+# PLATFORM: modified eCommerce Shopsoftware 2.0.x.x
 ######################################################################################
 
 class clickncollect {
@@ -29,6 +29,13 @@ class clickncollect {
     function quote($method = '') {
         global $PHP_SELF, $messageStack;
         
+        // falls Vorlaufzeit > 0, wird der Kunde darüber informiert
+        $text_way_additional = '';
+        if (basename($PHP_SELF) != FILENAME_SHOPPING_CART && MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME > 0) {
+		  $text_way_additional = sprintf(MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_TEXT, MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME);
+		}
+
+        // Shopversionen < 2.0.6.0 haben keine Error-Ausgabe in der checkout_shipping.php, daher wird hier eine generiert
         $errors = '';
         if (basename($PHP_SELF) != FILENAME_SHOPPING_CART) {
           if ($messageStack->size('checkout_shipping') > 0 && $this->version() < '2.0.6.0') {
@@ -36,6 +43,7 @@ class clickncollect {
 		  }
 		}
         
+        // hier werden nun endlich die Inputs für die Datums-/Uhrzeit-Auswahl bereitgestellt
         $collect = '';
         if (basename($PHP_SELF) != FILENAME_SHOPPING_CART) {
           $collectDate = ((isset($_SESSION['shipping']['collectDate']) && !empty($_SESSION['shipping']['collectDate'])) ? $_SESSION['shipping']['collectDate'] : '');
@@ -48,6 +56,7 @@ class clickncollect {
 	    		      <br>'.MODULE_SHIPPING_CLICKNCOLLECT_TEXT_ADDRESS;
 		}
 
+        // für das Collect in Click&Collect bauen wir noch als Information die Abholadresse mit ein
         $address_format = '';
         if (basename($PHP_SELF) != FILENAME_SHOPPING_CART) {
           $address = $this->address();
@@ -61,9 +70,10 @@ class clickncollect {
             'module' => MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TITLE
         );
 
+        // Zeit, das Ganze zusammen zu setzen :-)
         $this->quotes['methods'] = array(array(
             'id'    => $this->code,
-            'title' => MODULE_SHIPPING_CLICKNCOLLECT_TEXT_WAY.$collect.$address_format,
+            'title' => MODULE_SHIPPING_CLICKNCOLLECT_TEXT_WAY.$text_way_additional.$collect.$address_format,
             'cost'  => 0
         ));
        
@@ -139,10 +149,8 @@ class clickncollect {
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_STATUS', 'True', '6', '1', 'xtc_cfg_select_option(array(\'True\', \'False\'), ', now())");
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_ALLOWED', '', '6', '2', now())");
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_SORT_ORDER', '0', '6', '3', now())");
-		if ($this->version() >= '2.0.6.0') {
-          xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE', '\"24.12.2021\", \"25.12.2021\", \"26.12.2021\", \"31.12.2021\", \"01.01.2022\"', '6', '4', now())");
-          xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES', '\"08:00\", \"08:15\", \"08:30\", \"08:45\", \"09:00\", \"09:15\"', '6', '4', now())");
-		}
+        xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE', '01.01,01.05,03.10,24.12,25.12,26.12,31.12', '6', '4', now())");
+        xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES', '08:00,08:15,08:30,08:45,09:00,09:15', '6', '4', now())");
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME', '0', '6', '4', now())");
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_WEEKLY_TIMES', '0, 6', '6', '4', now())");
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, set_function, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_THEME', 'default', '6', '4', 'xtc_cfg_select_option(array(\'default\', \'dark\'), ', now())");
@@ -168,10 +176,8 @@ class clickncollect {
 	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_SORT_ORDER';
 	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME';
 	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_WEEKLY_TIMES';
-		if ($this->version() >= '2.0.6.0') {
-	  	  $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE';
-	  	  $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES';
-		}
+	  	$keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE';
+	  	$keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES';
 	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_THEME';
 	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_ALLOWED';
 	    $keys[] = 'MODULE_SHIPPING_CLICKNCOLLECT_COMPANY';
