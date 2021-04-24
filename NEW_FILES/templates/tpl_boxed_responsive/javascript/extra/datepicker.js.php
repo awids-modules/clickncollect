@@ -47,7 +47,7 @@ if (defined('MODULE_SHIPPING_CLICKNCOLLECT_STATUS') && MODULE_SHIPPING_CLICKNCOL
 			      formatTime:"H:i",
 			      theme:"'.MODULE_SHIPPING_CLICKNCOLLECT_THEME.'",
 			      allowTimes: [
-			        '.((empty(MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES)) ? format4DateTimePicker(MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES, false, ', ') : '').'
+			        '.((!empty(MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES)) ? format4DateTimePicker(MODULE_SHIPPING_CLICKNCOLLECT_DAILY_TIMES, false, ', ') : '').'
 			      ]
 			    });
 			  });
