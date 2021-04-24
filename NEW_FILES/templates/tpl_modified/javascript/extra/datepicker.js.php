@@ -30,7 +30,7 @@ if (defined('MODULE_SHIPPING_CLICKNCOLLECT_STATUS') && MODULE_SHIPPING_CLICKNCOL
 	 		      datepicker:true, 
 			      timepicker:false, 
 			      disabledDates: [
-			        '.format4DateTimePicker(MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE, true, ', ').'
+			        '.((!empty(MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE)) ? format4DateTimePicker(MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE, true, ', ') : '').'
 			      ],
 			      formatDate:"d.m.Y",
 			      format:"d.m.Y",
