@@ -12,7 +12,7 @@ seit Version 1.0.2
 - Eingabe von Abhol-Uhrzeiten nun für alle kompatiblen Shopversionen übers Backend möglich
 - in den Moduleinstellungen festlegbare Vorlaufzeit von X Tagen, bevor die Bestellung abgeholt werden kann
 - Kundenhinweis mit Anzahl der Tage im Checkout, wenn Vorlaufzeit größer als 0 Tage
-- eigenes/optionales Modul für Barzahlung bei Abholung hinzugefügt
+- eigenes Modul für Barzahlung bei Abholung hinzugefügt (wird automatisch mitinstalliert)
 
 seit Version 1.0.1
 - Eingabe von Feiertagen in Sprachdateien ausgelagert
