@@ -29,13 +29,12 @@ class clickncollect {
     function quote($method = '') {
         global $PHP_SELF, $messageStack;
         
-        // falls Vorlaufzeit > 0, wird der Kunde darüber informiert
         $text_way_additional = '';
         if (basename($PHP_SELF) != FILENAME_SHOPPING_CART && MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME > 0) {
-		  $text_way_additional = sprintf(MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_TEXT, MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME);
+		  $preTime = ((MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME == 1) ? MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_ONE : MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_MORE);
+		  $text_way_additional = sprintf($preTime, MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME);
 		}
 
-        // Shopversionen < 2.0.6.0 haben keine Error-Ausgabe in der checkout_shipping.php, daher wird hier eine generiert
         $errors = '';
         if (basename($PHP_SELF) != FILENAME_SHOPPING_CART) {
           if ($messageStack->size('checkout_shipping') > 0 && $this->version() < '2.0.6.0') {
@@ -43,20 +42,18 @@ class clickncollect {
 		  }
 		}
         
-        // hier werden nun endlich die Inputs für die Datums-/Uhrzeit-Auswahl bereitgestellt
         $collect = '';
         if (basename($PHP_SELF) != FILENAME_SHOPPING_CART) {
           $collectDate = ((isset($_SESSION['shipping']['collectDate']) && !empty($_SESSION['shipping']['collectDate'])) ? $_SESSION['shipping']['collectDate'] : '');
           $collectTime = ((isset($_SESSION['shipping']['collectTime']) && !empty($_SESSION['shipping']['collectTime'])) ? $_SESSION['shipping']['collectTime'] : '');
           $collect = '<br>'.$errors.'<br>
 	    		      <div class="highlightbox checkoutborder">
-		    			'.MODULE_SHIPPING_CLICKNCOLLECT_TEXT_DAY.xtc_draw_input_field('collectDate', $collectDate, 'id="collectDate" style="width: 100px"').'
-		    			'.MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TIME.xtc_draw_input_field('collectTime', $collectTime, 'id="collectTime" style="width: 60px"').'
+		    			'.MODULE_SHIPPING_CLICKNCOLLECT_TEXT_DAY.xtc_draw_input_field('collectDate', $collectDate, 'id="collectDate" style="width: 100px"').
+		    			  MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TIME.xtc_draw_input_field('collectTime', $collectTime, 'id="collectTime" style="width: 60px"').'
 	    		      </div>
 	    		      <br>'.MODULE_SHIPPING_CLICKNCOLLECT_TEXT_ADDRESS;
 		}
 
-        // für das Collect in Click&Collect bauen wir noch als Information die Abholadresse mit ein
         $address_format = '';
         if (basename($PHP_SELF) != FILENAME_SHOPPING_CART) {
           $address = $this->address();
@@ -70,7 +67,6 @@ class clickncollect {
             'module' => MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TITLE
         );
 
-        // Zeit, das Ganze zusammen zu setzen :-)
         $this->quotes['methods'] = array(array(
             'id'    => $this->code,
             'title' => MODULE_SHIPPING_CLICKNCOLLECT_TEXT_WAY.$text_way_additional.$collect.$address_format,
@@ -163,10 +159,24 @@ class clickncollect {
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_CITY', '', '6', '11', now())");
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_COUNTRY', '".STORE_COUNTRY."', '6', '12', 'xtc_get_country_name', 'xtc_cfg_pull_down_country_list(', now())");
         xtc_db_query("INSERT INTO " . TABLE_CONFIGURATION . " (configuration_key, configuration_value, configuration_group_id, sort_order, use_function, set_function, date_added) VALUES ('MODULE_SHIPPING_CLICKNCOLLECT_TAX_CLASS', '0', '6', '13', 'xtc_get_tax_class_title', 'xtc_cfg_pull_down_tax_classes(', now())");
+	    
+	    // install own payment module 'cash_on_collect'
+	    if (is_file(DIR_FS_CATALOG_MODULES . 'payment/cash_on_collect.php')) {
+	      require_once(DIR_FS_CATALOG_MODULES . 'payment/cash_on_collect.php');
+	      include_once(DIR_FS_LANGUAGES . $_SESSION['language'] . '/modules/payment/cash_on_collect.php');
+	      
+	      $cash_on_collect = new cash_on_collect();
+	      if ($cash_on_collect->check() < 1) {
+	        $cash_on_collect->install();
+	
+	        require_once(DIR_FS_INC.'update_module_configuration.inc.php');
+	        update_module_configuration('payment');
+	      }
+	    }
     }
 
     function remove() {
-        xtc_db_query("DELETE FROM " . TABLE_CONFIGURATION . " WHERE configuration_key in ('" . implode("', '", $this->keys()) . "')");
+        xtc_db_query("DELETE FROM " . TABLE_CONFIGURATION . " WHERE configuration_key IN ('" . implode("', '", $this->keys()) . "')");
     }
 
     function keys() {
@@ -193,10 +203,9 @@ class clickncollect {
     }
 
     function version() {
-      $version_query = xtc_db_query("SELECT version FROM database_version WHERE id = 1");
-      $version_result = xtc_db_fetch_array($version_query);
-      $version = str_replace('MOD_', '', $version_result['version']);
-	  return $version;
+      $check_query = xtc_db_query("SELECT version FROM ".TABLE_DATABASE_VERSION." ORDER BY id DESC LIMIT 1");
+      $check = xtc_db_fetch_array($check_query);
+	  return preg_replace('/[^0-9\.]/', '', $check['version']);;
     }
     
 }
