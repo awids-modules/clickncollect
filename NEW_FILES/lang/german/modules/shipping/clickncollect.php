@@ -7,18 +7,19 @@
 # PLATFORM: modified eCommerce Shopsoftware 2.0.x.x
 ######################################################################################
 
-define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TITLE', 'Click&amp;Collect');
+define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TITLE', 'Abholung (Click&amp;Collect)');
 define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_DESCRIPTION', 'Lassen Sie Ihre Kunden die bestellte Ware zu einer angegebenen Wunschzeit in Ihrer Gesch&auml;ftsstelle zur Abholung bereitlegen.');
 define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_WAY', 'Wir stellen Ihnen Ihren Einkauf bis zur angegebenen Wunschzeit zusammen und halten ihn zur Abholung f&uuml;r Sie bereit.');
 define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_WAY_CONFIRMATION', 'Abholzeit: %s - %s Uhr');
-define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_DAY', 'Abhol-Datum:&nbsp;');
-define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TIME', '&nbsp;Abhol-Uhrzeit:&nbsp;');
+define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_DAY', 'Abholdatum:&nbsp;');
+define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TIME', '&nbsp;Abholuhrzeit:&nbsp;');
 define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_ADDRESS', '<strong>Abholadresse:</strong>');
 define('MODULE_SHIPPING_CLICKNCOLLECT_ERROR_DAY', 'Bitte geben Sie ein Abhol-Datum an.');
 define('MODULE_SHIPPING_CLICKNCOLLECT_ERROR_TIME', 'Bitte geben Sie eine Abhol-Zeit an.');
 define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_TITLE', 'Vorlaufzeit');
 define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_DESC', 'Wie viele Tage Vorlaufzeit ben&ouml;tigen Sie, um die Bestellung abholfertig zu machen?');
-define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_TEXT', ' Beachten Sie bitte, dass wir %s Tag(e) Vorlaufzeit ben&ouml;tigen.');
+define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_ONE', ' Beachten Sie bitte, dass wir %s Tag Vorlaufzeit ben&ouml;tigen.');
+define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_MORE', ' Beachten Sie bitte, dass wir %s Tage Vorlaufzeit ben&ouml;tigen.');
 define('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE_TITLE', 'Feiertage');
 define('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE_DESC', 'Geben Sie hier im Format "dd.mm" (komma-separiert, ohne Jahreszahl) an, an welchem Datum keine Abholung aufgrund eines Feiertages m&ouml;glich sein soll. (Ist das Input leer, werden Feiertage nicht ber&uuml;cksichtigt.)');
 define('MODULE_SHIPPING_CLICKNCOLLECT_WEEKLY_TIMES_TITLE', 'Wochentage verbieten?');
