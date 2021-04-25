@@ -7,16 +7,17 @@
 # PLATFORM: modified eCommerce Shopsoftware 2.0.x.x
 ######################################################################################
 
-define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TITLE', 'Click&amp;Collect');
+define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TITLE', 'Collection (Click&amp;Collect)');
 define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_DESCRIPTION', 'Let your customers have the goods they have ordered ready for collection at your store at a specified time.');
-define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_WAY', 'We will put your purchase together for you by the specified time and keep it ready for you to pick up.');
-define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_WAY_CONFIRMATION', 'Pick-Up time: %s - %s');
-define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_DAY', 'Pick-Up date:&nbsp;');
-define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TIME', '&nbsp;Pick-Up time:&nbsp;');
-define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_ADDRESS', '<strong>Pick-Up address:</strong>');
+define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_WAY', 'We will put your purchase together for you by the specified time and keep it ready for you to collect.');
+define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_WAY_CONFIRMATION', 'Collection time: %s - %s');
+define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_DAY', 'Collection date:&nbsp;');
+define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_TIME', '&nbsp;Collection time:&nbsp;');
+define('MODULE_SHIPPING_CLICKNCOLLECT_TEXT_ADDRESS', '<strong>Collection address:</strong>');
 define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_TITLE', 'Lead time');
 define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_DESC', 'How many days lead time do you need to get the order ready for collection?');
-define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_TEXT', ' Please note that we require 2 day(s) lead time.');
+define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_ONE', ' Please note that we require %s day lead time.');
+define('MODULE_SHIPPING_CLICKNCOLLECT_PRE_TIME_MORE', ' Please note that we require %s days lead time.');
 define('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE_TITLE', 'Public holidays');
 define('MODULE_SHIPPING_CLICKNCOLLECT_FEIERTAGE_DESC', 'Enter here in the format "dd.mm" (comma separated, without year number) the date on which no collection should be possible due to a public holiday. (If the input is empty, holidays are not taken into account.)');
 define('MODULE_SHIPPING_CLICKNCOLLECT_WEEKLY_TIMES_TITLE', 'Forbid days of the week?');
